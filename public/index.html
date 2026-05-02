@@ -85,6 +85,16 @@ button:disabled{
     <button onclick="unlock()">Unlock</button>
 </div><div class="container" id="app" style="display:none;"><div class="card">
 <h2>Send Ticket</h2><input id="email" placeholder="Receiver Email"><input id="matchName" placeholder="Match Name">
+<input id="matchNumber" placeholder="Match Number (e.g. Match 44) (purple)">
+<input id="team1Logo" placeholder="Team 1 logo URl (perple)">
+<input id="team2Logo" placeholder="Team 2 logo URl (perple)">
+<input id="lat" placeholder="Latitude (purple)">
+<input id="lng" placeholder="Longitude (purple)">
+<input id="day" placeholder="Day (e.g. Sat)">
+<input id="city" placeholder="City (perple)">
+<input id="customerName" placeholder="Customer Name (perple)">
+<input id="phone" placeholder="Phone Number (perple)">
+<input id="venue" placeholder="Venue Full Address (perple)">
 <input id="date" placeholder="Date">
 <input id="time" placeholder="Time">
 <input id="stadium" placeholder="Stadium">
@@ -114,30 +124,59 @@ function unlock(){
     }
 }
 
+function generateSeats(count){
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let seats = [];
+
+  for(let i=0;i<count;i++){
+    const letter = letters[Math.floor(Math.random()*letters.length)];
+    const number = Math.floor(Math.random()*90)+10; // 2 digit
+    seats.push(`${letter}-${number}`);
+  }
+
+  return seats.join(", ");
+}
+
 async function send() {
   const btn = document.getElementById("sendBtn");
   const status = document.getElementById("status");
+
+  // ✅ FIX: get the select element properly
+  const theme = document.getElementById("theme");
+
+  // adding the seat number
+  const seatNumbers = generateSeats(Number(tickets.value));
 
   btn.disabled = true;
   btn.innerText = "Sending...";
 
   const data = {
     to: email.value,
-    theme: theme.value,
+    theme: theme.value, // now works correctly
     data: {
+      matchNumber: matchNumber.value,
       matchName: matchName.value,
       date: date.value,
       time: time.value,
+      city: city.value,
+      customerName: customerName.value,
+      phone: phone.value,
+      venue: venue.value,
       stadium: stadium.value,
       tickets: tickets.value,
       stand: stand.value,
       gate: gate.value,
       level: level.value,
-      seat: seat.value,
+      Staircase: seat.value,
       image: image.value,
       price: price.value,
       fees: fees.value,
-      total: total.value
+      total: total.value,
+      seat: seatNumbers,
+      team1Logo: team1Logo.value,
+      team2Logo: team2Logo.value,
+      lat: lat.value,
+      lng: lng.value,
     }
   };
 
