@@ -138,7 +138,7 @@ Enjoy the match!
 <tr>
 <td style="padding:16px;border-top:2px dotted #ddd">
 
-<a href="https://returning-particle-wax-following.trycloudflare.com/ticket/${id}"
+<a href="https://email-system-l2ix.onrender.com/ticket/${id}"
 style="
 display:block;
 text-align:center;
@@ -357,7 +357,7 @@ ${safe(data.phone, "N/A")}
 <tr>
 <td style="padding:10px 16px">
 
-<a href="https://returning-particle-wax-following.trycloudflare.com/ticket/${id}"
+<a href=" https://email-system-l2ix.onrender.com/ticket/${id}"
 style="display:block;text-align:center;border:1px solid #8E5BFF;padding:12px;border-radius:12px;color:#b388ff;text-decoration:none;font-weight:bold">
 View Tickets
 </a>
