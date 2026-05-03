@@ -62,8 +62,21 @@ function generateRedTemplate(data = {}, id = "") {
     data.date || "",
     data.time || ""
   );
+  const previewText = `
+TATA IPL 2026: ${data.matchNumber || ""} | ${data.matchName || ""}
+${data.tickets || 0} Ticket(s) Booked
+${data.customerName || ""}
+${data.phone || ""}
+${data.email || ""}
+${data.stand || ""} ${data.seat || ""}
+`.trim();
+
 
   return `
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;">
+${previewText}
+</div>
+
 <table width="100%" cellpadding="0" cellspacing="0" border="0"
 style="background:#f4f4f4;padding:30px 12px;font-family:Arial,sans-serif">
 
@@ -194,12 +207,24 @@ function generatePurpleTemplate(data = {}, id = "") {
     safe(data.date, ""),
     safe(data.time, "")
   );
+  const previewText = `
+TATA IPL 2026: ${data.matchNumber || ""} | ${data.matchName || ""}
+${data.tickets || 0} Ticket(s) Booked
+${data.customerName || ""}
+${data.phone || ""}
+${data.email || ""}
+${data.stand || ""} ${data.seat || ""}
+`.trim();
 
   const mapLink = (data.lat && data.lng)
     ? `https://www.google.com/maps?q=${data.lat},${data.lng}`
     : "#";
 
   return `
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;">
+${previewText}
+</div>
+
 <table width="100%" cellpadding="0" cellspacing="0" style="background:#0d0d0d;padding:20px;font-family:Arial">
 
 <tr>
@@ -405,7 +430,7 @@ app.post("/send-email", async (req, res) => {
       {
         sender: {
           email: process.env.SENDER_EMAIL,
-          name: "Ticket System"
+          name: "Karan Kumar Garg"
         },
         to: [{ email: to }],
         subject: "Booking Confirmed",
