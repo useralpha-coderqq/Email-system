@@ -897,6 +897,37 @@ body{
   padding:20px 0;
 }
 
+
+.qr-box{
+  position:relative;
+  width:230px;
+  margin:auto;
+}
+
+.qr-box img{
+  width:100%;
+  opacity:0.15; /* same blur effect */
+}
+
+.qr-overlay{
+  position:absolute;
+  inset:0;
+  background:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:15px;
+  border-radius:16px;
+}
+
+.qr-overlay p{
+  font-size:14px;
+  font-weight:bold;
+  color:#1f2d7a;
+  line-height:1.5;
+}
+
 .qr-slider{
   display:flex;
   transition:transform 0.35s ease;
@@ -996,14 +1027,13 @@ body{
     
 
     <div class="qr-slider" id="slider">
-      ${qrList.map(qr => `
-        <div class="qr-slide">
+     <div class="qr-box">
+      <div class="qr-overlay">
+       <p>QR will be visible before match starts</p>
+      </div>
           <img src="${qr}">
-        </div>
-      `).join("")}
-    </div>
-
-  </div>
+      </div>
+     </div>
 
   <div class="small" style="text-align:center;margin-top:10px;">
     Confirmation code: <b>${id.slice(0,6).toUpperCase()}</b>
