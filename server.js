@@ -1027,12 +1027,21 @@ body{
     
 
     <div class="qr-slider" id="slider">
-     <div class="qr-box">
-      <div class="qr-overlay">
-       <p>QR will be visible before match starts</p>
+    ${qrList.map((qr) => `
+    <div class="qr-slide">
+
+      <div class="qr-box">
+
+        <div class="qr-overlay">
+          <p>QR will be visible before match starts</p>
+        </div>
+
+        <img src="${qr}">
+
       </div>
-          <img src="${qr}">
-      </div>
+
+    </div>
+  `).join("")}
      </div>
 
   <div class="small" style="text-align:center;margin-top:10px;">
