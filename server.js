@@ -717,7 +717,7 @@ body{
 
         <div class="qr-section">
 
-            <button class="arrow-btn">&#10094;</button>
+            
 
             <div class="qr-box">
 
@@ -729,7 +729,7 @@ body{
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${data.id}">
             </div>
 
-            <button class="arrow-btn">&#10095;</button>
+            
 
         </div>
 
